@@ -1,17 +1,13 @@
 import type { Request, Response } from "express";
+
 import {
   createUserService,
-  getAllUsersService,
+  getUserProfileService,
 } from "./users.service";
-import type { CreateUserInput } from "./users.validation";
-
-export async function getUsersController(_req: Request, res: Response) {
-  const data = await getAllUsersService();
-
-  res.status(200).json({
-    data,
-  });
-}
+import type {
+  CreateUserInput,
+  GetUserParams,
+} from "./users.validation";
 
 export async function createUserController(
   req: Request<unknown, unknown, CreateUserInput>,
@@ -20,7 +16,24 @@ export async function createUserController(
   const data = await createUserService(req.body);
 
   res.status(201).json({
-    message: "User created successfully",
+    message: "User profile created successfully",
+    data,
+  });
+}
+
+export async function getUserProfileController(
+  req: Request<GetUserParams>,
+  res: Response
+) {
+  const data = await getUserProfileService(req.params.userId);
+
+  if (!data) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  return res.status(200).json({
     data,
   });
 }
