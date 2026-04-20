@@ -1,0 +1,13 @@
+import { Router } from "express";
+
+const healthRouter = Router();
+
+healthRouter.get("/", (_req, res) => {
+  res.status(200).json({
+    message: "API is running",
+    status: "ok",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+export default healthRouter;

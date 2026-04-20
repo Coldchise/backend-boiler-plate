@@ -1,0 +1,36 @@
+{
+  "name": "bakcend-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "postgres": "^3.4.9",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
