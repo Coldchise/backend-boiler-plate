@@ -1,13 +1,13 @@
 import { Router } from "express";
 
+import {
+  getHealthController,
+  getReadinessController,
+} from "./health.controller";
+
 const healthRouter = Router();
 
-healthRouter.get("/", (_req, res) => {
-  res.status(200).json({
-    message: "API is running",
-    status: "ok",
-    timestamp: new Date().toISOString(),
-  });
-});
+healthRouter.get("/", getHealthController);
+healthRouter.get("/ready", getReadinessController);
 
 export default healthRouter;

@@ -1,5 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
+
+import { env } from "../config/env";
 import { AppError } from "../lib/app-error";
 
 export function errorHandler(
@@ -23,8 +25,10 @@ export function errorHandler(
   }
 
   if (err instanceof Error) {
+    console.error(err);
+
     return res.status(500).json({
-      message: err.message,
+      message: env.NODE_ENV === "production" ? "Internal server error" : err.message,
     });
   }
 

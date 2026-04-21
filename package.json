@@ -1,5 +1,5 @@
 {
-  "name": "bakcend-boilerplate",
+  "name": "walk-to-earn-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,14 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "seed": "tsx src/db/seed.ts",
+    "drop": "tsx src/db/drop.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:drop": "tsx src/db/drop.ts",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
@@ -17,6 +23,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@supabase/supabase-js": "^2.104.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
